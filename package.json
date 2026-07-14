@@ -1,0 +1,82 @@
+{
+  "name": "notinglm",
+  "displayName": "notinglm",
+  "description": "Local-first block notes (notinglm) inside a VS Code editor tab. Starts a local Rust sidecar (mynote-server).",
+  "version": "0.1.1",
+  "publisher": "chaizhaobing",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Notebooks",
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "extensionKind": [
+    "ui"
+  ],
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "mynote.open",
+        "title": "notinglm: 打开"
+      }
+    ],
+    "configuration": {
+      "title": "notinglm",
+      "properties": {
+        "mynote.server.stopWhenTabClosed": {
+          "type": "boolean",
+          "default": true,
+          "description": "关闭 notinglm 标签页后停止本地服务"
+        },
+        "mynote.dataDir": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "description": "notinglm 数据目录（留空使用桌面版默认目录 %APPDATA%\\com.chaizhaobing.mynote）"
+        },
+        "mynote.features.ai": {
+          "type": "boolean",
+          "default": true,
+          "scope": "machine",
+          "description": "启用 AI 功能（服务端强制）"
+        },
+        "mynote.features.sync": {
+          "type": "boolean",
+          "default": false,
+          "scope": "machine",
+          "description": "启用云同步（默认关闭，服务端强制）"
+        },
+        "mynote.features.fileImport": {
+          "type": "boolean",
+          "default": true,
+          "scope": "machine",
+          "description": "启用文件导入（服务端强制）"
+        }
+      }
+    }
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": {
+      "supported": true
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.config.mjs",
+    "check": "tsc --noEmit",
+    "package": "vsce package --target win32-x64",
+    "test": "echo Run in Extension Development Host (F5); unit suite under src/test/"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.6.0",
+    "esbuild": "^0.25.0",
+    "typescript": "~5.8.3"
+  }
+}

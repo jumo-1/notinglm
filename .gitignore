@@ -1,0 +1,12 @@
+﻿node_modules/
+dist/
+media/
+bin/
+*.vsix
+.vsixmanifest
+*.map
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*

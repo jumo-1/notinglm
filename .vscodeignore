@@ -1,0 +1,8 @@
+src/**
+node_modules/**
+**/*.map
+esbuild.config.mjs
+tsconfig.json
+!dist/**
+!media/**
+!bin/win32-x64/**
